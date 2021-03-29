@@ -1,14 +1,15 @@
 import { __prod__ } from "./constants";
 import { Post } from "./entities/post";
+import { User } from "./entities/user";
 import { MikroORM } from "@mikro-orm/core";
 import path from "path";
 
 export default {
-  migraions: {
+  migrations: {
     path: path.join(__dirname, './migrations'), // path to the folder with migrations
     pattern: /^[\w-]+\d+\.[tj]s$/, // regex pattern for the migration files
   },
-  entities: [Post],
+  entities: [Post, User],
   dbName: 'cruddit',
   type: 'postgresql',
   debug: !__prod__
